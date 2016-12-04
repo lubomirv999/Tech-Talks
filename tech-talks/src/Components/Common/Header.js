@@ -5,7 +5,8 @@ export default class Header extends Component {
     render() {
         return (
             <div className="navbar navbar-default">
-                <h1>Articles</h1>
+                <h1>Tech Talks</h1>
+                <h2>Articles</h2>
                 <Hello username={this.props.username}/>
                 {this.props.children}
             </div>
