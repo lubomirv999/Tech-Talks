@@ -1,22 +1,40 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import './App.css';
-
-import NavigationBar from './Components/NavigationBar';
-import Footer from './Components/Footer';
-
-import KinveyRequester from './KinveyRequester';
-import $ from 'jquery';
+import Footer from './Components/Footer/Footer';
+import NavigationBar from './Components/Common/NavigationBar';
+import {Link} from 'react-router';
+import Header from './Components/Common/Header';
 
 class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      loggedIn: false,
+        username: 'Pesho'
+    }
+  }
   render() {
+    let navigation = {};
+    if (!this.state.loggedIn){
+      navigation = (
+          <NavigationBar>
+            <Link to="/" className="btn btn-default">Home</Link>
+            <Link to="/about" className="btn btn-default">About</Link>
+          </NavigationBar>
+      )
+    }else{
+      navigation = (
+          <NavigationBar>
+            <Link to="/" className="btn btn-default">Home</Link>
+            <Link to="/about" className="btn btn-default">About</Link>
+          </NavigationBar>
+      )
+    }
     return (
-      <div className="App">
-        <header>
-          // TODO: Initialize the props of nav bar (call functions and bind)
-          <NavigationBar/>
-        </header>
-        <main id='main'></main>
+      <div className="container">
+          <Header username={this.state.username} loggedIn={this.state.loggedIn}>
+              {navigation}
+          </Header>
+          {this.props.children}
         <Footer/>
       </div>
     );
