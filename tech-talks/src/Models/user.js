@@ -8,7 +8,6 @@ function saveSession(userInfo) {
     sessionStorage.setItem('userId', userId);
     let username = userInfo.username;
     sessionStorage.setItem('username', username);
-    sessionStorage.setItem('teamId', userInfo.teamId);
 
     observer.onSessionUpdate();
 }
@@ -29,6 +28,22 @@ function login(username, password, callback) {
     }
 }
 
+// user/register
+function register(username, password, callback) {
+    let userData = {
+        username,
+        password
+    };
+
+    requester.post('user', '', userData, 'basic')
+        .then(registerSuccess);
+
+    function registerSuccess(userInfo) {
+        saveSession(userInfo);
+        callback(true);
+    }
+}
+
 // user/logout
 function logout(callback) {
     requester.post('user', '_logout', null, 'kinvey')
@@ -41,3 +56,5 @@ function logout(callback) {
         callback(true);
     }
 }
+
+export {login, register, logout}

@@ -1,15 +1,16 @@
 import React, {Component} from 'react';
-import LoginForm from './LoginForm';
-import {login} from '../../Models/user';
+import RegisterForm from './RegisterForm';
+import {register} from '../../Models/user';
 
-export default class LoginPage extends Component {
+export default class RegisterPage extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            username: '',
-            password: '',
-            submitDisabled: false
-        };
+        this.state = { username: '', password: '', repeat: '', submitDisabled: false };
+        this.bindEventHandlers();
+    }
+
+    bindEventHandlers() {
+        // Make sure event handlers have the correct context
         this.onChangeHandler = this.onChangeHandler.bind(this);
         this.onSubmitHandler = this.onSubmitHandler.bind(this);
         this.onSubmitResponse = this.onSubmitResponse.bind(this);
@@ -23,6 +24,9 @@ export default class LoginPage extends Component {
             case 'password':
                 this.setState({ password: event.target.value });
                 break;
+            case 'repeat':
+                this.setState({ repeat: event.target.value });
+                break;
             default:
                 break;
         }
@@ -30,20 +34,20 @@ export default class LoginPage extends Component {
 
     onSubmitHandler(event) {
         event.preventDefault();
-        this.setState({
-            submitDisabled: true
-        });
-        login(
-            this.state.username,
-            this.state.password,
-            this.onSubmitResponse
-        );
+        if (this.state.password !== this.state.repeat) {
+            alert("Passwords don't match");
+            return;
+        }
+        this.setState({ submitDisabled: true });
+        register(this.state.username, this.state.password, this.onSubmitResponse);
     }
 
     onSubmitResponse(response) {
         if (response === true) {
+            // Navigate away from register page
             this.context.router.push('/');
         } else {
+            // Something went wrong, let the user try again
             this.setState({ submitDisabled: true });
         }
     }
@@ -52,9 +56,10 @@ export default class LoginPage extends Component {
         return (
             <div>
                 <span>Login Page</span>
-                <LoginForm
+                <RegisterForm
                     username={this.state.username}
                     password={this.state.password}
+                    repeat={this.state.repeat}
                     submitDisabled={this.state.submitDisabled}
                     onChangeHandler={this.onChangeHandler}
                     onSubmitHandler={this.onSubmitHandler}
@@ -64,6 +69,6 @@ export default class LoginPage extends Component {
     }
 }
 
-LoginPage.contextTypes = {
+RegisterPage.contextTypes = {
     router: React.PropTypes.object
 };

@@ -7,6 +7,7 @@ import {IndexRoute, browserHistory, Router, Route} from 'react-router';
 import HomePage from './Components/Home/HomePage';
 import About from './Components/About/AboutPage';
 import LoginPage from './Components/Login/LoginPage';
+import RegisterPage from './Components/Register/RegisterPage';
 import LogoutPage from './Components/Logout/LogoutPage';
 
 
@@ -16,6 +17,7 @@ ReactDOM.render(
             <IndexRoute component={HomePage}/>
             <Route path="about" component={About}/>
             <Route path="login" component={LoginPage}/>
+            <Route path="register" component={RegisterPage}/>
             <Route path="logout" component={LogoutPage}/>
         </Route>
     </Router>,

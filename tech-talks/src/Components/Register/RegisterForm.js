@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-export default class LoginForm extends Component {
+export default class RegisterForm extends Component {
     render() {
         return (
             <form onSubmit={this.props.onSubmitHandler}>
@@ -26,7 +26,18 @@ export default class LoginForm extends Component {
                         onChange={this.props.onChangeHandler}
                     />
                 </div>
-                <input className="btn btn-default" type="submit" value="Login" disabled={this.props.submitDisabled}/>
+                <div className="form-group">
+                    <label>Repeat Password:</label>
+                    <input
+                        className="form-control"
+                        type="password"
+                        name="repeat"
+                        value={this.props.repeat}
+                        disabled={this.props.submitDisabled}
+                        onChange={this.props.onChangeHandler}
+                    />
+                </div>
+                <input className="btn btn-default" type="submit" value="Register" disabled={this.props.submitDisabled}/>
             </form>
         );
     }
