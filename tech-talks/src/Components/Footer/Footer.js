@@ -5,7 +5,7 @@ export default class Footer extends Component {
     render() {
         return (
             <footer className="footer">
-               (c) 2016 - Articles (React App)
+               &copy; 2016 - Software University JS Application Project
             </footer>
         );
     }

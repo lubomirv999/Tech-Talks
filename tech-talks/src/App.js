@@ -17,8 +17,9 @@ class App extends Component {
     if (!this.state.loggedIn){
       navigation = (
           <NavigationBar>
-            <Link to="/" className="btn btn-default">Home</Link>
-            <Link to="/about" className="btn btn-default">About</Link>
+              <Link to="/" className="btn btn-default">Home</Link>
+              <Link to="/about" className="btn btn-default">About</Link>
+              <Link to="/login" className="btn btn-default" activeClassName="btn btn-default active">Login</Link>
           </NavigationBar>
       )
     }else{

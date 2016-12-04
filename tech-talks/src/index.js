@@ -6,6 +6,8 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import {IndexRoute, browserHistory, Router, Route} from 'react-router';
 import HomePage from './Components/Home/HomePage';
 import About from './Components/About/AboutPage';
+import LoginPage from './Components/Login/LoginPage';
+import LogoutPage from './Components/Logout/LogoutPage';
 
 
 ReactDOM.render(
@@ -13,6 +15,8 @@ ReactDOM.render(
         <Route path="/" component={App}>
             <IndexRoute component={HomePage}/>
             <Route path="about" component={About}/>
+            <Route path="login" component={LoginPage}/>
+            <Route path="logout" component={LogoutPage}/>
         </Route>
     </Router>,
   document.getElementById('app')
