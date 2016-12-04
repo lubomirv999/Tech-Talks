@@ -50,7 +50,7 @@ class App extends Component {
       navigation = (
           <NavigationBar>
             <Link to="/" className="btn btn-default">Home</Link>
-            <Link to="/article" className="btn btn-default">Articles</Link>
+            <Link to="/articles" className="btn btn-default">Articles</Link>
             <Link to="/createArticle" className="btn btn-default">Create Article</Link>
             <Link to="/about" className="btn btn-default">About</Link>
             <Link to="/logout" className="btn btn-default">Logout</Link>

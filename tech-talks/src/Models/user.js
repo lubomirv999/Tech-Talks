@@ -8,6 +8,7 @@ function saveSession(userInfo) {
     sessionStorage.setItem('userId', userId);
     let username = userInfo.username;
     sessionStorage.setItem('username', username);
+    sessionStorage.setItem('articleId', userInfo.articleId);
 
     observer.onSessionUpdate();
 }
@@ -57,4 +58,30 @@ function logout(callback) {
     }
 }
 
-export {login, register, logout}
+function joinTeam(articleId, callback) {
+    let userData = {
+        username: sessionStorage.getItem('username'),
+        articleId: articleId
+    };
+    requester.update('user', sessionStorage.getItem('userId'), userData, 'kinvey')
+        .then((response) => {
+            saveSession(response);
+            observer.onSessionUpdate();
+            callback(true);
+        });
+}
+
+function leaveTeam(callback) {
+    let userData = {
+        username: sessionStorage.getItem('username'),
+        articleId: ''
+    };
+    requester.update('user', sessionStorage.getItem('userId'), userData, 'kinvey')
+        .then((response) => {
+            saveSession(response);
+            observer.onSessionUpdate();
+            callback(true);
+        });
+}
+
+export {login, register, logout, joinTeam, leaveTeam}
