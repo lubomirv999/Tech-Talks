@@ -31,3 +31,4 @@ export default class LoginForm extends Component {
         );
     }
 }
+
