@@ -31,6 +31,6 @@ ReactDOM.render(
             <Route path="profile" component={ProfilePage}/>
             <Route path="logout" component={LogoutPage}/>
         </Route>
-    </Router>
+    </Router>,
   document.getElementById('app')
 );
