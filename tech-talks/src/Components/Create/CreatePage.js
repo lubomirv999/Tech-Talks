@@ -8,6 +8,7 @@ export default class CreatePage extends Component {
         this.state = {
             title: '',
             articleContent: '',
+            owner: '',
             submitDisabled: false
         };
         this.onChangeHandler = this.onChangeHandler.bind(this);
@@ -25,10 +26,12 @@ export default class CreatePage extends Component {
     onSubmitHandler(event) {
         event.preventDefault();
         this.setState({submitDisabled: true});
+        let owner = sessionStorage.getItem("username");
         create(
             this.state.title,
             this.state.articleContent,
-            this.onSubmitResponse
+            this.onSubmitResponse,
+            owner
         );
     }
 
