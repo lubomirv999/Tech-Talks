@@ -1,19 +1,32 @@
 import React, {Component} from 'react';
-import CreateForm from './CreateForm';
-import {create} from '../../Models/article';
+import EditForm from './EditForm';
+import {edit, loadArticleDetails} from '../../Models/article';
 
-export default class CreatePage extends Component {
+export default class EditPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
             title: '',
             articleContent: '',
-            owner: '',
             submitDisabled: false
         };
         this.onChangeHandler = this.onChangeHandler.bind(this);
         this.onSubmitHandler = this.onSubmitHandler.bind(this);
         this.onSubmitResponse = this.onSubmitResponse.bind(this);
+        this.onLoadSuccess = this.onLoadSuccess.bind(this);
+    }
+
+    componentDidMount() {
+        // Populate form
+        loadArticleDetails(this.props.params.articleId, this.onLoadSuccess);
+    }
+
+    onLoadSuccess(response) {
+        this.setState({
+            title: response.title,
+            articleContent: response.articleContent,
+            submitDisabled: false
+        });
     }
 
     onChangeHandler(event) {
@@ -26,12 +39,11 @@ export default class CreatePage extends Component {
     onSubmitHandler(event) {
         event.preventDefault();
         this.setState({submitDisabled: true});
-        let owner = sessionStorage.getItem("username");
-        create(
+        edit(
+            this.props.params.articleId,
             this.state.title,
             this.state.articleContent,
-            this.onSubmitResponse,
-            owner
+            this.onSubmitResponse
         );
     }
 
@@ -47,7 +59,7 @@ export default class CreatePage extends Component {
         return (
             <div>
                 <h1>Create Article</h1>
-                <CreateForm
+                <EditForm
                     title={this.state.title}
                     articleContent={this.state.articleContent}
                     submitDisabled={this.state.submitDisabled}
@@ -59,6 +71,6 @@ export default class CreatePage extends Component {
     }
 }
 
-CreatePage.contextTypes = {
+EditPage.contextTypes = {
     router: React.PropTypes.object
 };

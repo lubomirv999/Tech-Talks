@@ -44,7 +44,7 @@ export default class LoginPage extends Component {
         if (response === true) {
             this.context.router.push('/');
         } else {
-            this.setState({ submitDisabled: true });
+            this.setState({ submitDisabled: false });
         }
     }
 

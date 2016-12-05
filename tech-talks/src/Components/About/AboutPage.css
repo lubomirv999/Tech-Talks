@@ -1,0 +1,20 @@
+h1#aboutPage{
+    font-family: "Times New Roman", Times, serif;
+    font-size: 35pt;
+    background-color: #2aabd2;
+    border-radius: 5px;
+    padding: 10px;
+    color: whitesmoke;
+}
+
+p#paraAboutPage{
+    font-family: "Times New Roman", Times, serif;
+    font-size: 20pt;
+    background-color: #2aabd2;
+    border-radius: 5px;
+    text-align: justify;
+    color: whitesmoke;
+    text-decoration: blink;
+    padding: 10px;
+}
+

@@ -1,0 +1,26 @@
+div.navbar.navbar-default{
+    background-color: #2aabd2;
+    font-family: "Times New Roman", Times, serif;
+    color: black;
+    font-weight: 100;
+    text-align: center;
+    padding: 0px;
+    margin: 0px;
+}
+
+a.btn.btn-default:hover{
+    background-color: #66afe9;
+    color: white;
+    border-color: white;
+}
+
+h1#headerTitle{
+    font-family: "Times New Roman", Times, serif;
+    font-size: 35pt;
+}
+
+a.btn.btn-default{
+    font-family: "Times New Roman", Times, serif;
+    font-size: 15pt;
+    margin: 3px;
+}

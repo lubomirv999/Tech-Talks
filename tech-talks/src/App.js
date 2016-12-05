@@ -46,16 +46,17 @@ class App extends Component {
               <Link to="/about" className="btn btn-default">About</Link>
           </NavigationBar>
       )
-    }else{
-      navigation = (
-          <NavigationBar>
-            <Link to="/" className="btn btn-default">Home</Link>
-            <Link to="/articles" className="btn btn-default">Articles</Link>
-            <Link to="/createArticle" className="btn btn-default">Create Article</Link>
-            <Link to="/about" className="btn btn-default">About</Link>
-            <Link to="/logout" className="btn btn-default">Logout</Link>
-          </NavigationBar>
-      )
+    }else {
+        navigation = (
+            <NavigationBar>
+                <Link to="/" className="btn btn-default">Home</Link>
+                <Link to="/articles" className="btn btn-default">Articles</Link>
+                <Link to="/createArticle" className="btn btn-default">Create Article</Link>
+                <Link to="/profile" className="btn btn-default">My Profile</Link>
+                <Link to="/about" className="btn btn-default">About</Link>
+                <Link to="/logout" className="btn btn-default">Logout</Link>
+            </NavigationBar>
+        )
     }
 
     return (

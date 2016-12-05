@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Team from './Article';
+import Article from './Article';
 import {loadArticles} from '../../Models/article';
 import {Link} from 'react-router';
 //import observer from '../../models/observer';
@@ -29,7 +29,7 @@ export default class ArticlesPage extends Component {
 
     render() {
         let createLink = null;
-        if (!sessionStorage.getItem('articleId')) {
+        if (sessionStorage.getItem('articleId')===undefined) {
             createLink = <Link to="/create" className="btn btn-default">Create article</Link>
         }
 
@@ -39,7 +39,7 @@ export default class ArticlesPage extends Component {
                 {createLink}
                 <div>
                     {this.state.articles.map((e, i) => {
-                        return <Team key={i} title={e.title} id={e._id} articleContent={e.articleContent}/>
+                        return <Article key={i} title={e.title} id={e._id} articleContent={e.articleContent}/>
                     })}
                 </div>
             </div>

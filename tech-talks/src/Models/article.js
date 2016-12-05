@@ -7,7 +7,7 @@ function loadArticles(callback) {
         .then(callback);
 }
 
-function loadTeamDetails(articleId, onTeamSuccess) {
+function loadArticleDetails(articleId, onTeamSuccess) {
     get('appdata', 'articles/' + articleId, 'kinvey')
         .then(onTeamSuccess);
 }
@@ -26,15 +26,14 @@ function edit(articleId, name, content, callback) {
         .then(callback(true));
 }
 
-function create(title, content, callback) {
+function create(title, content, callback, owner) {
     let teamData = {
         title: title,
-        articleContent: content
+        articleContent: content,
+        owner: owner
     };
     post('appdata', 'articles', teamData, 'kinvey')
-        .then((response) => {
-            joinTeam(response._id, callback);
-        });
+        .then(callback(true));
 }
 
-export {loadArticles, loadTeamDetails, loadUsersDetails, edit, create};
+export {loadArticles, loadArticleDetails, loadUsersDetails, edit, create};

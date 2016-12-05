@@ -11,6 +11,9 @@ import RegisterPage from './Components/Register/RegisterPage';
 import LogoutPage from './Components/Logout/LogoutPage';
 import ArticlesPage from './Components/Articles/ArticlesPage';
 import CreatePage from './Components/Create/CreatePage';
+import EditPage from './Components/Edit/EditPage';
+import Details from './Components/Articles/Details';
+import ProfilePage from './Components/Profile/ProfilePage';
 
 ReactDOM.render(
     <Router history={browserHistory}>
@@ -18,11 +21,14 @@ ReactDOM.render(
             <IndexRoute component={HomePage}/>
             <Route path="articles">
                 <IndexRoute component={ArticlesPage}/>
+                <Route path=":articleId" component={Details}/>
             </Route>
             <Route path="about" component={About}/>
             <Route path="createArticle" component={CreatePage}/>
             <Route path="login" component={LoginPage}/>
+            <Route path="edit/:articleId" component={EditPage}/>
             <Route path="register" component={RegisterPage}/>
+            <Route path="profile" component={ProfilePage}/>
             <Route path="logout" component={LogoutPage}/>
         </Route>
     </Router>

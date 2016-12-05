@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import HomeStyles from './HomeStyles.css';
 
 export default class HomePage extends Component {
     render(){
         let message = <p>You are currently not logged.</p>
 
         if(sessionStorage.getItem('username')) {
-            message = <div>Welcome</div>
+            message = <div>Welcome, {sessionStorage.getItem('username')}!</div>
         }
 
         return (

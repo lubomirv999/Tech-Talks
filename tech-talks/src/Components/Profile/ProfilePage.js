@@ -1,19 +1,30 @@
 import React, {Component} from 'react';
-import CreateForm from './CreateForm';
-import {create} from '../../Models/article';
+import ProfileForm from './ProfileForm';
+import {edit} from '../../Models/user';
 
-export default class CreatePage extends Component {
+export default class ProfilePage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            title: '',
-            articleContent: '',
-            owner: '',
             submitDisabled: false
         };
         this.onChangeHandler = this.onChangeHandler.bind(this);
         this.onSubmitHandler = this.onSubmitHandler.bind(this);
         this.onSubmitResponse = this.onSubmitResponse.bind(this);
+        this.onLoadSuccess = this.onLoadSuccess.bind(this);
+    }
+
+    componentDidMount() {
+
+    }
+
+
+    onLoadSuccess(response) {
+        this.setState({
+            username: response.username,
+            password: response.password,
+            submitDisabled: false
+        });
     }
 
     onChangeHandler(event) {
@@ -26,12 +37,10 @@ export default class CreatePage extends Component {
     onSubmitHandler(event) {
         event.preventDefault();
         this.setState({submitDisabled: true});
-        let owner = sessionStorage.getItem("username");
-        create(
-            this.state.title,
-            this.state.articleContent,
-            this.onSubmitResponse,
-            owner
+        edit(
+            this.state.username,
+            this.state.password,
+            this.onSubmitResponse
         );
     }
 
@@ -46,10 +55,8 @@ export default class CreatePage extends Component {
     render() {
         return (
             <div>
-                <h1>Create Article</h1>
-                <CreateForm
-                    title={this.state.title}
-                    articleContent={this.state.articleContent}
+                <h1>My Profile</h1>
+                <ProfileForm
                     submitDisabled={this.state.submitDisabled}
                     onChangeHandler={this.onChangeHandler}
                     onSubmitHandler={this.onSubmitHandler}
@@ -59,6 +66,6 @@ export default class CreatePage extends Component {
     }
 }
 
-CreatePage.contextTypes = {
+ProfilePage.contextTypes = {
     router: React.PropTypes.object
 };
