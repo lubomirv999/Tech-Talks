@@ -25,6 +25,6 @@ ReactDOM.render(
             <Route path="register" component={RegisterPage}/>
             <Route path="logout" component={LogoutPage}/>
         </Route>
-    </Router>,
+    </Router>
   document.getElementById('app')
 );
