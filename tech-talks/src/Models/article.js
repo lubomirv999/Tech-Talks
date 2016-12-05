@@ -26,10 +26,11 @@ function edit(articleId, name, content, callback) {
         .then(callback(true));
 }
 
-function create(title, content, callback) {
+function create(title, content, callback, owner) {
     let teamData = {
         title: title,
-        articleContent: content
+        articleContent: content,
+        owner: owner
     };
     post('appdata', 'articles', teamData, 'kinvey')
         .then(callback(true));

@@ -9,7 +9,7 @@ export default class Details extends Component {
         this.state ={
             title: '',
             articleContent: '',
-            comments: [],
+            owner: '',
             canEdit: false,
             ownTeam: sessionStorage.getItem('articleId') === this.props.params.articleId
         };
@@ -20,13 +20,13 @@ export default class Details extends Component {
 
     componentDidMount() {
         loadArticleDetails(this.props.params.articleId, this.onLoadSuccess);
-        loadUsersDetails(this.props.params.articleId, this.onUsersSuccess);
     }
 
     onLoadSuccess(response) {
         let newState = {
             title: response.title,
-            articleContent: response.articleContent
+            articleContent: response.articleContent,
+            owner: response.owner,
         };
         if (response._acl.creator === sessionStorage.getItem('userId')) {
             newState.canEdit = true;
@@ -41,28 +41,19 @@ export default class Details extends Component {
     }
 
     render() {
-        let title = 'Team details';
+        let title = 'Article';
         if (this.state.title !== '') {
             title = this.state.title + '!!!';
         }
 
-        let comments = <p>No comments</p>;
-        if (this.state.comments.length > 0) {
-            comments = (
-            <div>
-                {this.state.comments.map((e, i) => <span key={i} className="member">{e.username}</span>)}
-            </div>
-            );
-        }
 
         return (
             <div className="details-box">
+                <span className="spanner">Title</span>
                 <span className="titlebar">{title}</span>
                 <span className="spanner">Content</span>
                 <p>{this.state.articleContent || 'No description'}</p>
-                <span className="spanner">Owner</span>
-                {comments}
-                <span className="spanner">Team management</span>
+                <span className="spanner">Owner - {this.state.owner}</span>
                 <ArticleControls
                     articleId={this.props.params.articleId}
                     canEdit={this.state.canEdit}
