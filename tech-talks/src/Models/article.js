@@ -7,7 +7,7 @@ function loadArticles(callback) {
         .then(callback);
 }
 
-function loadTeamDetails(articleId, onTeamSuccess) {
+function loadArticleDetails(articleId, onTeamSuccess) {
     get('appdata', 'articles/' + articleId, 'kinvey')
         .then(onTeamSuccess);
 }
@@ -32,9 +32,7 @@ function create(title, content, callback) {
         articleContent: content
     };
     post('appdata', 'articles', teamData, 'kinvey')
-        .then((response) => {
-            joinTeam(response._id, callback);
-        });
+        .then(callback(true));
 }
 
-export {loadArticles, loadTeamDetails, loadUsersDetails, edit, create};
+export {loadArticles, loadArticleDetails, loadUsersDetails, edit, create};

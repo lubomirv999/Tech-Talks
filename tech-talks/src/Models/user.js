@@ -21,7 +21,7 @@ function login(username, password, callback) {
     };
 
     requester.post('user', 'login', userData, 'basic')
-        .then(loginSuccess);
+        .then(loginSuccess).catch(callback(false));
 
     function loginSuccess(userInfo) {
         saveSession(userInfo);
@@ -58,30 +58,4 @@ function logout(callback) {
     }
 }
 
-function joinTeam(articleId, callback) {
-    let userData = {
-        username: sessionStorage.getItem('username'),
-        articleId: articleId
-    };
-    requester.update('user', sessionStorage.getItem('userId'), userData, 'kinvey')
-        .then((response) => {
-            saveSession(response);
-            observer.onSessionUpdate();
-            callback(true);
-        });
-}
-
-function leaveTeam(callback) {
-    let userData = {
-        username: sessionStorage.getItem('username'),
-        articleId: ''
-    };
-    requester.update('user', sessionStorage.getItem('userId'), userData, 'kinvey')
-        .then((response) => {
-            saveSession(response);
-            observer.onSessionUpdate();
-            callback(true);
-        });
-}
-
-export {login, register, logout, joinTeam, leaveTeam}
+export {login, register, logout}
