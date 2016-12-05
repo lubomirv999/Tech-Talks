@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {loadArticleDetails, loadUsersDetails} from '../../Models/article';
+import {loadArticleDetails, loadArticleComments} from '../../Models/article';
 import ArticleControls from './ArticleControls';
 import './Details.css';
 import { addComment, loadArticleComments } from '../../Models/comment'
@@ -12,9 +12,10 @@ export default class Details extends Component {
             title: '',
             articleContent: '',
             owner: '',
+            text: '',
             canEdit: false,
             ownTeam: sessionStorage.getItem('articleId') === this.props.params.articleId,
-            comments: [],
+            comments: []
         };
 
         this.onLoadSuccess = this.onLoadSuccess.bind(this);
@@ -53,14 +54,13 @@ export default class Details extends Component {
     }
 
     onCommentsLoadSuccess(response) {
-        console.log(response);
         this.setState({comments: response})
     }
 
     onSubmitHandler(event) {
         event.preventDefault();
         let userId = sessionStorage.getItem('userId');
-        let itemId = this.props.params.productId;
+        let itemId = this.props.params.articleId;
         let username = sessionStorage.getItem('username');
         addComment(this.state.text, userId, itemId, username, this.componentDidMount())
     }
