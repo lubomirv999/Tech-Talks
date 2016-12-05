@@ -13,6 +13,7 @@ import ArticlesPage from './Components/Articles/ArticlesPage';
 import CreatePage from './Components/Create/CreatePage';
 import EditPage from './Components/Edit/EditPage';
 import Details from './Components/Articles/Details';
+import ProfilePage from './Components/Profile/ProfilePage';
 
 ReactDOM.render(
     <Router history={browserHistory}>
@@ -27,6 +28,7 @@ ReactDOM.render(
             <Route path="login" component={LoginPage}/>
             <Route path="edit/:articleId" component={EditPage}/>
             <Route path="register" component={RegisterPage}/>
+            <Route path="profile" component={ProfilePage}/>
             <Route path="logout" component={LogoutPage}/>
         </Route>
     </Router>,
