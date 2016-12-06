@@ -6,7 +6,7 @@ export default class Comment extends Component {
         return (
             <form onSubmit={this.props.onSubmitHandler}>
                 <div className="form-group">
-                    <label>Comment:</label>
+                    <label id="comment">Comment:</label>
                     <input
                         className="form-control"
                         type="text"

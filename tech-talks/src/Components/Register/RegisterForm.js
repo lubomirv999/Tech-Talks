@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
-
+import './RegisterStyles.css';
 export default class RegisterForm extends Component {
     render() {
         return (
             <form onSubmit={this.props.onSubmitHandler}>
                 <div className="form-group">
-                    <label>Username:</label>
-                    <input
+                    <label id="usernameRegister">Username</label>
+                    <input id="usernameReg"
                         className="form-control"
                         type="text"
                         name="username"
@@ -16,8 +16,8 @@ export default class RegisterForm extends Component {
                     />
                 </div>
                 <div className="form-group">
-                    <label>Password:</label>
-                    <input
+                    <label id="passwordReg">Password</label>
+                    <input id="passwordReg"
                         className="form-control"
                         type="password"
                         name="password"
@@ -27,8 +27,8 @@ export default class RegisterForm extends Component {
                     />
                 </div>
                 <div className="form-group">
-                    <label>Repeat Password:</label>
-                    <input
+                    <label id="repeatPass">Repeat Password</label>
+                    <input id="repeatPassForm"
                         className="form-control"
                         type="password"
                         name="repeat"
@@ -37,7 +37,7 @@ export default class RegisterForm extends Component {
                         onChange={this.props.onChangeHandler}
                     />
                 </div>
-                <input className="btn btn-default" type="submit" value="Register" disabled={this.props.submitDisabled}/>
+                <input id="btnRegister" className="btn btn-default" type="submit" value="Register" disabled={this.props.submitDisabled}/>
             </form>
         );
     }

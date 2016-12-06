@@ -5,6 +5,10 @@
     border: 3px solid antiquewhite;
     text-decoration: none;
     color: black;
+    background-color: #00b3ee;
+    border-radius: 3px;
+    position: relative;
+    left:10%;
 }
 
 .team-box:hover {

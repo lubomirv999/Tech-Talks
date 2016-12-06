@@ -10,8 +10,8 @@ export default class HomePage extends Component {
         }
 
         return (
-            <div>
-                <h1>Home Page</h1>
+            <div id="homePage">
+                <h1 id="title">Home Page</h1>
                 {message}
             </div>
         )

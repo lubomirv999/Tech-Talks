@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
+import './LoginPageStyles.css';
 
 export default class LoginForm extends Component {
     render() {
         return (
             <form onSubmit={this.props.onSubmitHandler}>
                 <div className="form-group">
-                    <label>Username:</label>
-                    <input
+                    <label id="username">Username</label>
+                    <input id="usernameInput"
                         className="form-control"
                         type="text"
                         name="username"
@@ -16,8 +17,8 @@ export default class LoginForm extends Component {
                     />
                 </div>
                 <div className="form-group">
-                    <label>Password:</label>
-                    <input
+                    <label id="password">Password</label>
+                    <input id="passwordInput"
                         className="form-control"
                         type="password"
                         name="password"
@@ -26,7 +27,7 @@ export default class LoginForm extends Component {
                         onChange={this.props.onChangeHandler}
                     />
                 </div>
-                <input className="btn btn-default" type="submit" value="Login" disabled={this.props.submitDisabled}/>
+                <input id="btnLogin" className="btn btn-default" type="submit" value="Login" disabled={this.props.submitDisabled}/>
             </form>
         );
     }

@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
+import './CreateStyles.css';
 
 export default class CreateForm extends Component {
     render() {
         return (
             <form onSubmit={this.props.onSubmitHandler}>
                 <div className="form-group">
-                    <label>Title:</label>
-                    <input
+                    <label id="titleCreate">Title</label>
+                    <input id="createTitle"
                         className="form-control"
                         type="text"
                         name="title"
@@ -16,8 +17,8 @@ export default class CreateForm extends Component {
                     />
                 </div>
                 <div className="form-group">
-                    <label>Content:</label>
-                    <textarea
+                    <label id="contentCreate">Content</label>
+                    <textarea id="contentCreateText"
                         className="form-control"
                         name="articleContent"
                         value={this.props.articleContent}
@@ -25,7 +26,7 @@ export default class CreateForm extends Component {
                         onChange={this.props.onChangeHandler}
                     />
                 </div>
-                <input className="btn btn-default" type="submit" value="Create" disabled={this.props.submitDisabled}/>
+                <input id="createBtn" className="btn btn-default" type="submit" value="Create" disabled={this.props.submitDisabled}/>
             </form>
         );
     }
