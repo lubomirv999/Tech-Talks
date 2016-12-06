@@ -1,5 +1,4 @@
 import {get, post, update} from './requester';
-import {joinTeam} from './user';
 
 function loadArticles(callback) {
     // Request articles from db

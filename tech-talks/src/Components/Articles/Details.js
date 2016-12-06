@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {loadArticleDetails, loadArticleComments} from '../../Models/article';
+import {loadArticleDetails} from '../../Models/article';
 import ArticleControls from './ArticleControls';
 import './Details.css';
 import { addComment, loadArticleComments } from '../../Models/comment'
@@ -14,20 +14,15 @@ export default class Details extends Component {
             owner: '',
             text: '',
             canEdit: false,
-            ownTeam: sessionStorage.getItem('articleId') === this.props.params.articleId,
+            ownArticle: sessionStorage.getItem('articleId') === this.props.params.articleId,
             comments: []
         };
 
         this.onLoadSuccess = this.onLoadSuccess.bind(this);
-        this.onUsersSuccess = this.onUsersSuccess.bind(this);
         this.onCommentsLoadSuccess = this.onCommentsLoadSuccess.bind(this);
         this.onSubmitHandler = this.onSubmitHandler.bind(this);
         this.onChangeHandler = this.onChangeHandler.bind(this);
-        this.statusChange = this.statusChange.bind(this);
-    }
-
-    statusChange(response) {
-        this.context.router.push('/');
+        this.componentDidMount = this.componentDidMount.bind(this);
     }
 
     componentDidMount() {
@@ -39,18 +34,12 @@ export default class Details extends Component {
         let newState = {
             title: response.title,
             articleContent: response.articleContent,
-            owner: response.owner,
+            owner: response.owner
         };
         if (response._acl.creator === sessionStorage.getItem('userId')) {
             newState.canEdit = true;
         }
         this.setState(newState);
-    }
-
-    onUsersSuccess(response) {
-        this.setState({
-            comments: response
-        });
     }
 
     onCommentsLoadSuccess(response) {
@@ -62,7 +51,9 @@ export default class Details extends Component {
         let userId = sessionStorage.getItem('userId');
         let itemId = this.props.params.articleId;
         let username = sessionStorage.getItem('username');
-        addComment(this.state.text, userId, itemId, username, this.componentDidMount())
+        addComment(this.state.text, userId, itemId, username, loadArticleComments(this.props.params.articleId, this.onCommentsLoadSuccess));
+        loadArticleComments(this.props.params.articleId, this.onCommentsLoadSuccess)
+        this.setState({text: ''})
     }
 
     onChangeHandler(event) {
@@ -94,7 +85,7 @@ export default class Details extends Component {
                 <ArticleControls
                     articleId={this.props.params.articleId}
                     canEdit={this.state.canEdit}
-                    ownTeam={this.state.ownTeam}
+                    ownTeam={this.state.ownArticle}
                 />
                 <Comment
                     text={this.state.text}

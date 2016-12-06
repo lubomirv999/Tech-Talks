@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Hello from '../Common/Hello';
-import HeaderStyles from './HeaderStyles.css';
+import './HeaderStyles.css';
 
 export default class Header extends Component {
     render() {

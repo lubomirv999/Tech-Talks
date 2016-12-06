@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import Article from './Article';
 import {loadArticles} from '../../Models/article';
-import {Link} from 'react-router';
-//import observer from '../../models/observer';
 
 export default class ArticlesPage extends Component {
     constructor(props) {
@@ -10,16 +8,7 @@ export default class ArticlesPage extends Component {
         this.state = {
             articles: []
         };
-        this.bindEventHandlers();
-    }
-
-    bindEventHandlers() {
         this.onLoadSuccess = this.onLoadSuccess.bind(this);
-    }
-
-    onLoadSuccess(response) {
-        // Display articles
-        this.setState({articles: response})
     }
 
     componentDidMount() {
@@ -27,16 +16,15 @@ export default class ArticlesPage extends Component {
         loadArticles(this.onLoadSuccess);
     }
 
-    render() {
-        let createLink = null;
-        if (sessionStorage.getItem('articleId')===undefined) {
-            createLink = <Link to="/create" className="btn btn-default">Create article</Link>
-        }
+    onLoadSuccess(response) {
+        // Display articles
+        this.setState({articles: response})
+    }
 
+    render() {
         return (
             <div>
                 <h1>Articles Page</h1>
-                {createLink}
                 <div>
                     {this.state.articles.map((e, i) => {
                         return <Article key={i} title={e.title} id={e._id} articleContent={e.articleContent}/>
