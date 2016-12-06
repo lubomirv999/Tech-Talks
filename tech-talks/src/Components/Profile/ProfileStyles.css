@@ -74,3 +74,9 @@ label#titleProfile{
     padding: 10px;
     color: whitesmoke;
 }
+
+h1#title{
+    font-family: "Times New Roman", Times, serif;
+    font-size: 30pt;
+    color: whitesmoke;
+}

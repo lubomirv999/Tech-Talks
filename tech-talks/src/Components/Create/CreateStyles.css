@@ -1,4 +1,4 @@
-label#titleCreate{
+label#title{
     font-family: "Times New Roman", Times, serif;
     font-size: 15pt;
     background-color: #2aabd2;
@@ -84,4 +84,10 @@ textarea#contentCreateText.form-control{
     border-radius: 4px;
     margin-right: 23%;
     margin-left: 25%;
+}
+
+h1#title{
+    font-family: "Times New Roman", Times, serif;
+    font-size: 30pt;
+    color: whitesmoke;
 }

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Article from './Article';
 import {loadArticles} from '../../Models/article';
+import './ArticlesPageStyles.css';
 
 export default class ArticlesPage extends Component {
     constructor(props) {
@@ -24,7 +25,7 @@ export default class ArticlesPage extends Component {
     render() {
         return (
             <div>
-                <h1>Articles Page</h1>
+                <h1 id="title">Articles Page</h1>
                 <div>
                     {this.state.articles.map((e, i) => {
                         return <Article key={i} title={e.title} id={e._id} articleContent={e.articleContent}/>

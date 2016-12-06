@@ -15,7 +15,7 @@ export default class Comment extends Component {
                         onChange={this.props.onChangeHandler}
                     />
                 </div>
-                <input className="btn btn-default" type="submit" value="Comment"/>
+                <input id="button" className="btn btn-default" type="submit" value="Comment"/>
             </form>
         )
     }

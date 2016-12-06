@@ -55,7 +55,7 @@ export default class ProfilePage extends Component {
     render() {
         return (
             <div>
-                <h1>My Profile</h1>
+                <h1 id="title">My Profile</h1>
                 <ProfileForm
                     submitDisabled={this.state.submitDisabled}
                     onChangeHandler={this.onChangeHandler}

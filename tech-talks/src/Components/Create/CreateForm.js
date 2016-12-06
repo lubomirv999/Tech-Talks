@@ -6,7 +6,7 @@ export default class CreateForm extends Component {
         return (
             <form onSubmit={this.props.onSubmitHandler}>
                 <div className="form-group">
-                    <label id="titleCreate">Title</label>
+                    <label id="title">Title</label>
                     <input id="createTitle"
                         className="form-control"
                         type="text"

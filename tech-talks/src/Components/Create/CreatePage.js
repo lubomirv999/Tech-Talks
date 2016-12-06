@@ -46,7 +46,7 @@ export default class CreatePage extends Component {
     render() {
         return (
             <div>
-                <h1>Create Article</h1>
+                <h1 id="title">Create Article</h1>
                 <CreateForm
                     title={this.state.title}
                     articleContent={this.state.articleContent}

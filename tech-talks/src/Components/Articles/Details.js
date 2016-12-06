@@ -73,9 +73,9 @@ export default class Details extends Component {
                 <span className="spanner">Title</span>
                 <span className="titlebar">{title}</span>
                 <span className="spanner">Content</span>
-                <p>{this.state.articleContent || 'No description'}</p>
-                <span className="spanner">Owner - {this.state.owner}</span>
-                <ul>
+                <p id="content">{this.state.articleContent || 'No description'}</p>
+                <span className="spanner">Comments</span>
+                <ul id="comments">
                     {this.state.comments.map((comment, index) => {
                         return (
                             <li key={index}>{comment.text + ' posted by: ' + comment.username}</li>

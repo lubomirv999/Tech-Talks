@@ -1,4 +1,4 @@
-div#homePage{
+div#articlePage{
     font-family: "Times New Roman", Times, serif;
     font-size: 15pt;
     background-color: #2aabd2;
@@ -13,8 +13,4 @@ h1#title{
     font-family: "Times New Roman", Times, serif;
     font-size: 30pt;
     color: whitesmoke;
-}
-
-img.img-responsive {
-    image-resolution: from-image;
 }

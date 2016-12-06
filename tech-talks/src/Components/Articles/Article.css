@@ -29,8 +29,13 @@
     padding: 0.25em;
     padding-left: 1.5em;
     font-weight: 600;
+    color: whitesmoke;
 }
 
 .team-box p {
     margin: 1.5em;
+}
+
+p#content {
+    color: whitesmoke;
 }

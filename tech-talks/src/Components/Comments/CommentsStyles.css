@@ -1,0 +1,19 @@
+label#comment {
+    color: whitesmoke;
+}
+
+input#button {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 15pt;
+    background-color: #2aabd2;
+    border-radius: 5px;
+    padding: 10px;
+    color: whitesmoke;
+    align-self: auto;
+    margin-bottom: 5px;
+    position:relative;
+    left:47%;
+    right:40%;
+    bottom:5%;
+    top:60%;
+}
