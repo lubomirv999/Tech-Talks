@@ -17,4 +17,11 @@ function addComment(text, authorId, articleId, username, callback) {
         .then(callback);
 }
 
-export { addComment, loadArticleComments }
+function deleteComment(id, articleId, callback) {
+    requester.deleteItem('appdata', 'comments', id, 'kinvey')
+        .then(requester.get('appdata', `comments?query={"articleId": "${articleId}"}`, 'kinvey'))
+        .then(callback)
+
+}
+
+export { addComment, loadArticleComments, deleteComment }

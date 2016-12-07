@@ -7,5 +7,12 @@
 }
 
 .infobox:hover {
-    background-color: #888888;
+    background-color: #2aabd2;
+}
+#infobox {
+    background-color: #0b0a57;
+    position: fixed;
+    top: 5%;
+    left: 41%;
+    right: 42%;
 }

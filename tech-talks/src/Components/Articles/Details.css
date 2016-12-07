@@ -27,7 +27,7 @@
 }
 .details-box {
     display: block;
-    width: 35em;
+    width: 80%;
     margin: 1em;
     border: 3px solid antiquewhite;
     text-decoration: none;
@@ -35,7 +35,7 @@
     background-color: #00b3ee;
     border-radius: 3px;
     position: absolute;
-    left:10%;
+    left:9%;
 }
 
 .team-box:hover {

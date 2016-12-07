@@ -2,8 +2,9 @@ import React, {Component} from 'react';
 import {loadArticleDetails} from '../../Models/article';
 import ArticleControls from './ArticleControls';
 import './Details.css';
-import { addComment, loadArticleComments } from '../../Models/comment'
-import Comment from '../Comments/Comments'
+import { addComment, loadArticleComments, deleteComment } from '../../Models/comment'
+import Comment from '../Comments/Comments';
+import observer from '../../Models/observer';
 
 export default class Details extends Component {
     constructor(props) {
@@ -22,7 +23,7 @@ export default class Details extends Component {
         this.onCommentsLoadSuccess = this.onCommentsLoadSuccess.bind(this);
         this.onSubmitHandler = this.onSubmitHandler.bind(this);
         this.onChangeHandler = this.onChangeHandler.bind(this);
-        this.componentDidMount = this.componentDidMount.bind(this);
+        this.deleteComment = this.deleteComment.bind(this);
     }
 
     componentDidMount() {
@@ -60,13 +61,17 @@ export default class Details extends Component {
         this.setState({text: event.target.value})
     }
 
+    deleteComment(event) {
+        deleteComment(event.target.name, this.props.params.articleId);
+        loadArticleComments(this.props.params.articleId, this.onCommentsLoadSuccess);
+        observer.showSuccess('The comment was deleted!')
+    }
 
     render() {
         let title = 'Article';
         if (this.state.title !== '') {
-            title = this.state.title + '!!!';
+            title = this.state.title + '!';
         }
-
 
         return (
             <div className="details-box">
@@ -77,9 +82,21 @@ export default class Details extends Component {
                 <span className="spanner">Comments</span>
                 <ul id="comments">
                     {this.state.comments.map((comment, index) => {
-                        return (
-                            <li key={index}>{comment.text + ' posted by: ' + comment.username}</li>
-                        )
+                        let authorId = sessionStorage.getItem('userId');
+                        if(comment.authorId === authorId){
+                            return (
+                                <li key={index}>{comment.text + ' posted by: ' + comment.username}
+                                    <button
+                                        name={comment._id}
+                                        className="btn btn-default"
+                                        onClick={this.deleteComment}>Delete</button>
+                                </li>
+                            )
+                        }else{
+                            return (
+                                <li key={index}>{comment.text + ' posted by: ' + comment.username}</li>
+                            )
+                        }
                     })}
                 </ul>
                 <ArticleControls

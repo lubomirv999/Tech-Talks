@@ -89,7 +89,7 @@ export default class Infobox extends Component {
         }
 
         return (
-            <div className={className} onClick={this.hide}>
+            <div id="infobox" className={className} onClick={this.hide}>
                 <span>
                     {this.state.message}
                 </span>
