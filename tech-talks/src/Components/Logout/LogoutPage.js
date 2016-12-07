@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {logout} from '../../Models/user';
+import observer from '../../Models/observer';
 
 export default class LogoutPage extends Component {
     constructor(props) {
@@ -13,10 +14,10 @@ export default class LogoutPage extends Component {
 
     onSubmitResponse(response) {
         if (response === true) {
-            // Navigate away from login page
+            observer.showSuccess('Logout successful!');
             this.context.router.push('/');
         } else {
-            // Something went wrong, let the user know
+            observer.showError('Logout unsuccessful!');
         }
     }
 
